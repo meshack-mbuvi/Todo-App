@@ -1,0 +1,66 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "Todo app is an application that helps users manage their time by reminding them of their items they have planned to achieve over a given period.  Users create projects which they intend to work on, then add items to be completed towards achieving those ideas. Todo will then check each users projects to check whether there are any items pending completion. It then sends a reminder in form of an email reminding them of the specific item in their list of todos.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "NODE_ENV=test nyc mocha test/**/*.ts --timeout=1000000 --require ts-node/register  --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "start": "NODE_ENV=prod nodemon src/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meshack-mbuvi/todo-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meshack-mbuvi/todo-app/issues"
+  },
+  "homepage": "https://github.com/meshack-mbuvi/todo-app#readme",
+  "dependencies": {
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-typescript": "^7.1.0",
+    "@babel/runtime": "^7.4.5",
+    "@types/chai": "^4.1.7",
+    "@types/cors": "^2.8.5",
+    "@types/express": "^4.16.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.9.5",
+    "@types/supertest": "^2.0.7",
+    "codacy-coverage": "^3.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^14.1.1",
+    "pg": "^7.11.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.8.7",
+    "stripe": "^7.1.0",
+    "supertest": "^4.0.2",
+    "ts-node": "^8.2.0",
+    "typeorm": "^0.2.17",
+    "typescript": "^3.5.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.3",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1"
+  }
+}
