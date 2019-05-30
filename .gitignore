@@ -1,0 +1,11 @@
+.env
+node_modules
+
+# Coverage directory used by nyc
+coverage
+.coveralls.yml
+.nyc_output
+
+# Editor configuration files
+.idea/
+.vscode/
