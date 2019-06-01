@@ -1,0 +1,126 @@
+openapi: 3.0.0
+info:
+  title: Todo app
+  description: Todo app is an application that helps users manage their time by reminding them of their items they have planned to achieve over a given period.
+
+version: 0.1.9
+
+servers:
+  - url: /v1
+    description: Todo app base address
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: test
+        lastName:
+          type: string
+          example: test
+        email:
+          type: string
+          example: test@test.com
+        password:
+          type: string
+          example: test12
+
+paths:
+  /users/signup:
+    post:
+      summary: Create a new user account.
+      description: Creates user account.
+      requestBody:
+        description: Input fields required to add new account
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/User'
+      responses:
+        201:
+          description: User account created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                    example: test
+                  lastName:
+                    type: string
+                    example: test
+                  email:
+                    type: string
+                    example: test@test.com
+                  token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        400:
+          description: Error in input fields
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: firstName is required
+        409:
+          description: An account exists with similar details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: An account with similar email address exists
+  /users/login:
+    post:
+      summary: Endpoint for user to log in
+      description: Endpoint for user to log in
+      requestBody:
+        description: Input fields required to add new account
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: test@test.com
+                password:
+                  type: string
+                  example: test12
+      responses:
+        200:
+          description: Authenticated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                    example: test
+                  lastName:
+                    type: string
+                    example: test
+                  token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        401:
+          description: Unauthenticated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Wrong email or password

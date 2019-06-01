@@ -1,10 +1,8 @@
 const NODE_ENV = process.env.NODE_ENV;
-let db;
+let db = process.env.DB_TODO;
 
 if (NODE_ENV === 'test') {
   db = process.env.DB_TEST;
-} else {
-  db = process.env.DB_TODO;
 }
 
 module.exports = {
@@ -15,7 +13,7 @@ module.exports = {
   username: 'postgres',
   password: 'postgres',
   database: db,
-  logging: true,
+  logging: false,
   synchronize: true,
   entities: ['src/entity/**/*.ts'],
   migrations: ['src/migration/**/*.ts'],
