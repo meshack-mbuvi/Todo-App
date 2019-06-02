@@ -20,15 +20,15 @@ Stripe - Online payment processing for internet businesses. Stripe is a suite of
 ```
 
 ## Features to be implemented
-- Users can sign up.
-- Users can login.
-- User can reset password.
-- A user can donate funds using VISA card.
-- A user can create projects.
-- Users can add todo items in their specific projects
-- A User can set deadline for the todo item.
-- A user can mark a todo item as finished/done.
-- A user will be able to receive an email notification reminding them of their current item
+- [x] Users can sign up.
+- [x] Users can login.
+- [ ] User can reset password.
+- [ ] A user can donate funds using VISA card.
+- [ ] A user can create projects.
+- [ ] Users can add todo items in their specific projects
+- [ ] A User can set deadline for the todo item.
+- [ ] A user can mark a todo item as finished/done.
+- [ ] A user will be able to receive an email notification reminding them of their current item
 
 ## Developer/Owner
 [Meshack Mbuvi](https://github.com/meshack-mbuvi)
