@@ -54,3 +54,13 @@ export const userLoginRequestSchema = Joi.object().keys({
         .required()
         .error((err) => onError(err))
 })
+
+export const projectRequestSchema = Joi.object().keys({
+    title: Joi
+        .string().trim().not("")
+        .required()
+        .error((err) => onError(err)),
+    description: Joi
+        .string().trim().not("")
+        .error((err) => onError(err))
+})

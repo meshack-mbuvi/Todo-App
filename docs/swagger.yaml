@@ -6,10 +6,15 @@ info:
 version: 0.1.9
 
 servers:
-  - url: /v1
+  - url: /api
     description: Todo app base address
 
 components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
   schemas:
     User:
       type: object
@@ -32,6 +37,8 @@ paths:
     post:
       summary: Create a new user account.
       description: Creates user account.
+      tags:
+        - User
       requestBody:
         description: Input fields required to add new account
         required: true
@@ -83,6 +90,8 @@ paths:
     post:
       summary: Endpoint for user to log in
       description: Endpoint for user to log in
+      tags:
+        - User
       requestBody:
         description: Input fields required to add new account
         required: true
@@ -124,3 +133,79 @@ paths:
                   message:
                     type: string
                     example: Wrong email or password
+  /projects:
+    post:
+      summary: Endpoint for creating a new project
+      description: A user creates a project using this endpoint
+      tags:
+        - Projects
+      security:
+        - {}
+        - bearerAuth: []
+      requestBody:
+        description: Input fields required for creating new project
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: To buy a car
+                description:
+                  type: string
+                  example: For taxi
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 1
+                  title:
+                    type: string
+                    example: Buy a car
+                  description:
+                    type: string
+                    example: for taxi
+        409:
+          description: Conflict in project title
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Another project with similar title exists
+    get:
+      summary: Retrieve all projects for current logged in user
+      tags:
+        - Projects
+      security:
+        - {}
+        - bearerAuth: []
+      responses:
+        200:
+          description: Retrieved all projects for the logged in user.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      example: 1
+                    title:
+                      type: string
+                      example: Buy car
+                    description:
+                      type: string
+                      example: for taxi

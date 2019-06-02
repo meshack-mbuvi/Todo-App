@@ -4,7 +4,7 @@
   "description": "Todo app is an application that helps users manage their time by reminding them of their items they have planned to achieve over a given period.  Users create projects which they intend to work on, then add items to be completed towards achieving those ideas. Todo will then check each users projects to check whether there are any items pending completion. It then sends a reminder in form of an email reminding them of the specific item in their list of todos.",
   "main": "index.ts",
   "scripts": {
-    "test": "NODE_ENV=test nyc mocha test/**/*.ts --timeout=1000000 --require ts-node/register --exit",
+    "test": "NODE_ENV=test nyc mocha test/*.ts --timeout=1000000 --require ts-node/register --all --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start": "NODE_ENV=prod nodemon src/index"
   },

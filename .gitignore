@@ -2,9 +2,8 @@
 node_modules
 
 # Coverage directory used by nyc
-coverage
-.coveralls.yml
 .nyc_output
+coverage
 
 # Editor configuration files
 .idea/

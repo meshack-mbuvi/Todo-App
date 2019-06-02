@@ -3,7 +3,7 @@ import { UserController } from '../controllers/user';
 import {
     userSignUpRequestSchema,
     userLoginRequestSchema
-} from '../middleware/validators/requestsSchema';
+} from '../middleware/index';
 
 import { joiValidator } from '../middleware'
 
