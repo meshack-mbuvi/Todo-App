@@ -5,6 +5,8 @@ import * as cors from 'cors';
 import { createConnection } from 'typeorm';
 import * as YAML from 'yamljs';
 
+import { authentication } from '../middleware/auth';
+
 import routes from '../routes';
 
 const swaggerUi = require('swagger-ui-express');
@@ -19,14 +21,16 @@ export async function createApp() {
 
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-    app.use('/v1', routes)
+    app.use('/api/*', authentication)
+
+    app.use('/api', routes)
     app.use('*', (req, res) => {
         res.status(404);
         // respond with json
         return res.send({
             status: 404,
             message: 'Page Not Found',
-            docs: '/api-docs/',
+            docs: '/api-docs/'
         });
     });
 
