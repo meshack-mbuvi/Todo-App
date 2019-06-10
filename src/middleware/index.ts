@@ -1,7 +1,10 @@
 export {
     userSignUpRequestSchema,
     userLoginRequestSchema,
-    projectRequestSchema
+    projectRequestSchema,
+    todoRequestSchema,
+    singleTodoRequestSchema,
+    todoUpdateRequestSchema
 } from './validators/requestsSchema';
 
 export { default as joiValidator } from './validators/validator';

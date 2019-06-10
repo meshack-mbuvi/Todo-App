@@ -25,9 +25,9 @@ Stripe - Online payment processing for internet businesses. Stripe is a suite of
 -  [x] A user can create projects.
 -  [ ] User can reset password.
 -  [ ] A user can donate funds using VISA card.
--  [ ] Users can add todo items in their specific projects
+-  [x] Users can add todo items in their specific projects
 -  [ ] A User can set deadline for the todo item.
--  [ ] A user can mark a todo item as finished/done.
+-  [x] A user can mark a todo item as finished/done.
 -  [ ] A user will be able to receive an email notification reminding them of their current item
 
 ## Developer/Owner

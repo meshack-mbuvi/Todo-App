@@ -16,6 +16,9 @@ const onError = (error: any) => {
         case 'string.email': {
             return new Error(`${key} must be a valid email address`);
         }
+        case 'boolean.base': {
+            return new Error(`${key} must be a boolean value`);
+        }
         default: {
             return new Error(`${key} should not be empty.`);
         }
@@ -63,4 +66,34 @@ export const projectRequestSchema = Joi.object().keys({
     description: Joi
         .string().trim().not("")
         .error((err) => onError(err))
+})
+
+export const todoRequestSchema = Joi.object().keys({
+    title: Joi
+        .string().trim().not("")
+        .required()
+        .error((err) => onError(err)),
+})
+
+export const singleTodoRequestSchema = Joi.object().keys({
+    projectId: Joi
+        .number()
+        .required()
+        .error((err) => onError(err)),
+    todoId: Joi
+        .number()
+        .required()
+        .error((err) => onError(err)),
+})
+
+export const todoUpdateRequestSchema = Joi.object().keys({
+    title: Joi
+        .string().trim().not("")
+        .error((err) => onError(err)),
+    started: Joi
+        .boolean().strict()
+        .error(err => onError(err)),
+    finished: Joi
+        .boolean().strict()
+        .error(err => onError(err))
 })
