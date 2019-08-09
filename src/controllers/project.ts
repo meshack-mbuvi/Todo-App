@@ -25,6 +25,7 @@ export class ProjectController {
                     description: results.description
                 })
         } catch (error) {
+            console.log(error.message)
             return res.status(409).send({ message: "A project with similar title exists" })
         }
     }

@@ -209,3 +209,196 @@ paths:
                     description:
                       type: string
                       example: for taxi
+  /todos:
+    post:
+      summary: Endpoint for creating a new project
+      description: A user creates a project using this endpoint
+      tags:
+        - Todos
+      security:
+        - {}
+        - bearerAuth: []
+      requestBody:
+        description: Input fields required for creating new project
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Save 10%
+                projectId:
+                  type: string
+                  example: 1
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 1
+                  title:
+                    type: string
+                    example: Save 10%
+        409:
+          description: Conflict in todo title
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Another todo item with similar title exists
+  /todos/{todoId}:
+    get:
+      summary: Retrieve a single for current logged in user
+      tags:
+        - Todos
+      security:
+        - {}
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: todoId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Retrieved all projects for the logged in user.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      example: 1
+                    title:
+                      type: string
+                      example: Save 10%
+    put:
+      summary: Endpoint for updating a todo item
+      tags:
+        - Todos
+      security:
+        - {}
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: todoId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Input fields required for creating new project
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Save updated
+      responses:
+        200:
+          description: Started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 1
+                  title:
+                    type: string
+                    example: Save 10%
+                  started:
+                    type: boolean
+                    example: true
+                  finished:
+                    type: boolean
+                    example: false
+  /todos/start/{todoId}:
+    put:
+      summary: Endpoint for starting a todo item
+      tags:
+        - Todos
+      security:
+        - {}
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: todoId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Input fields required for creating new project
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                started:
+                  type: boolean
+                  example: true
+      responses:
+        200:
+          description: Started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 1
+                  title:
+                    type: string
+                    example: Save 10%
+                  started:
+                    type: boolean
+                    example: true
+  /todos/inProject/{projectId}:
+    get:
+      summary: Retrieve all todos for current logged in user
+      tags:
+        - Todos
+      security:
+        - {}
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Retrieved all projects for the logged in user.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      example: 1
+                    title:
+                      type: string
+                      example: Save 10%

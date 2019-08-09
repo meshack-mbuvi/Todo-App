@@ -8,6 +8,6 @@ const router = Router()
 
 router.use('/users', userRoutes)
 router.use('/projects', projectRoutes)
-router.use('/projects/:projectId/todos', todoRoutes)
+router.use('/todos', todoRoutes)
 
 export default router;

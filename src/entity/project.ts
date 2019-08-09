@@ -1,5 +1,5 @@
 import {
-    Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn
+    Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany
 } from 'typeorm';
 import { User } from './user';
 import { Todo } from './todos';
@@ -17,7 +17,6 @@ export class Project {
     description: string;
 
     @ManyToOne(type => User, user => user.projects)
-    @JoinColumn({ name: 'userId' })
     user: User;
 
     @OneToMany(type => Todo, todo => todo.project)
